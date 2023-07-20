@@ -19,7 +19,7 @@ if (dailyMessage) {
             dailyMessage.innerHTML = message.message;
             break;
         } else{
-            dailyMessage.innerHTML = 'Quando começar logo vês!';
+            dailyMessage.innerHTML = 'Quando começar, logo vês!';
         }
     }
 }

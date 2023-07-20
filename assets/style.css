@@ -419,6 +419,15 @@ picture img {
 .daily-message {
   position: relative;
   overflow: auto;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+@media (min-width: 992px) {
+  .daily-message {
+    position: relative;
+    left: -130px;
+  }
 }
 
 .daily-message__text {
