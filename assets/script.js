@@ -52,7 +52,7 @@ if (btnExitIntro) {
         document.body.classList.add('go-forward')
 
         setTimeout(() => {
-            window.location = '/content.html'
+            window.location = '/kelha/content.html'
         }, 5000);
     })
 }
