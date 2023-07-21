@@ -51,9 +51,13 @@ if (btnExitIntro) {
         const backgroundWrapper = document.querySelector('.background-wrapper')
         document.body.classList.add('go-forward')
 
+        const audio = document.querySelector('audio');
+        audio.play();
+
+
         setTimeout(() => {
             window.location = '/kelha/content.html'
-        }, 5000);
+        }, 4000);
     })
 }
 
