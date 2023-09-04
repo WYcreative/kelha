@@ -1,28 +1,37 @@
-import myJson from './data/data.json' assert {type: 'json'};
+let myJson = {};
 
-
-const dailyMessage = document.querySelector('.daily-message__text')
-
-if (dailyMessage) {
-    const getCurrentDayMonth = () => {
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
-    const now = new Date();
-    const day = String(now.getDate()).padStart(2, '0');
-    const month = months[now.getMonth()];
-
-    return `${day}-${month}`;
+fetch('./data/data.json')
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
     }
+    return response.json();
+  })
+  .then((jsonData) => {
+    const dailyMessage = document.querySelector('.daily-message__text');
 
-    for (const message of myJson.messages) {
+    if (dailyMessage) {
+      const getCurrentDayMonth = () => {
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const now = new Date();
+        const day = String(now.getDate()).padStart(2, '0');
+        const month = months[now.getMonth()];
+        return `${day}-${month}`;
+      };
+
+      for (const message of jsonData.messages) {
         if (message.day == getCurrentDayMonth()) {
-            dailyMessage.innerHTML = message.message;
-            break;
-        } else{
-            dailyMessage.innerHTML = 'Quando começar, logo vês!';
+          dailyMessage.innerHTML = message.message;
+          break;
+        } else {
+          dailyMessage.innerHTML = 'Quando começar, logo vês!';
         }
+      }
     }
-}
+  })
+  .catch((error) => {
+    console.error('Error fetching JSON:', error);
+  });
 
 // Exit Intro
 
