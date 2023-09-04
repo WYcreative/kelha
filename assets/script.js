@@ -1,6 +1,6 @@
 let myJson = {};
 
-fetch('./data/data.json')
+fetch('./assets/data/data.json')
   .then((response) => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
